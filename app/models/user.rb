@@ -16,7 +16,7 @@ class User < ApplicationRecord
   end
 
   def join!(group)
-    participated_groups.include?(group)
+    participated_groups << group
   end
 
   def quit!(group)
