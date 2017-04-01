@@ -39,6 +39,7 @@ gem 'devise'
 gem 'will_paginate'
 gem 'carrierwave'
 gem 'mini_magick'
+gem 'font-awesome-rails'
 
 
 group :development, :test do
