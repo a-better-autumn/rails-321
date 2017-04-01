@@ -1,6 +1,6 @@
 class GroupsController < ApplicationController
   before_action :authenticate_user!, only: [:new, :create, :edit, :update, :destroy ]
-  before_action :find_group_and_check_permission, only: [:edit, :update, :destroy]
+  before_action :find_group_and_check_permission, only: [:edit, :update, :destroy, :join, :quit]
 
   def index
     @groups = Group.all
@@ -48,9 +48,9 @@ class GroupsController < ApplicationController
 
     if !current_user.is_member_of?(@group)
       current_user.join!(@group)
-      flash[:notice] = "加入本讨论版成功！"
+      flash[:notice] = "成功收藏啦！"
     else
-      flash[:warning] = "你已经是本讨论版成员了！"
+      flash[:warning] = "你已经收藏过本片啦！"
     end
 
     redirect_to group_path(@group)
@@ -61,9 +61,9 @@ class GroupsController < ApplicationController
 
     if current_user.is_member_of?(@group)
       current_user.quit!(@group)
-      flash[:alert] = "已退出本讨论版！"
+      flash[:alert] = "已取消收藏！"
     else
-      flash[:warning] = "你不是本讨论版成员，怎么退出 XD"
+      flash[:warning] = "先登录再收藏呀 XD"
     end
 
     redirect_to group_path(@group)
