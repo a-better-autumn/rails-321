@@ -16,7 +16,7 @@
 
 
     <% if current_user && current_user == @group.user %>
-    <%= link_to("Edit", edit_group_path(@group), class: "btn btn-primary pull-right")%>
+    <%= link_to("编辑介绍", edit_group_path(@group), class: "btn btn-primary pull-right")%>
     <% end %>
   </div>
   <h2><%= @group.title %></h2>
